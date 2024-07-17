@@ -1,11 +1,38 @@
 import asyncio
 import aiohttp
 import csv
+import time
+import socket
+import random
+import urllib.request
 from typing import List, Dict, Any, Callable
 
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
-FIELDS = ["paperId", "title", "authors", "year", "citationCount", "influentialCitationCount", "tldr", "abstract", "publicationTypes", "externalIds", "openAccessPdf", "url", "citationStyles"]
-CSV_COLUMNS = ["Title", "Authors", "Year", "Citations", "Influential Citations", "S2 TLDR", "Abstract", "Publication Type", "DOI", "PDF URL", "S2 URL"]
+FIELDS = ["paperId", "title", "authors", "year", "citationCount", "influentialCitationCount", "tldr", "abstract", "venue", "publicationTypes", "externalIds", "openAccessPdf", "url", "citationStyles"]
+CSV_COLUMNS = ["Title", "Authors", "Year", "Citations", "Influential Citations", "S2 TLDR", "Abstract", "Publication", "Publication Type", "DOI", "PDF URL", "S2 URL"]
+
+class TokenBucket:
+    def __init__(self, tokens, fill_rate):
+        self.capacity = tokens
+        self.tokens = tokens
+        self.fill_rate = fill_rate
+        self.timestamp = time.time()
+
+    async def consume(self):
+        now = time.time()
+        tokens_to_add = (now - self.timestamp) * self.fill_rate
+        self.tokens = min(self.capacity, self.tokens + tokens_to_add)
+        self.timestamp = now
+        if self.tokens >= 1:
+            self.tokens -= 1
+            return True
+        return False
+
+    async def wait_for_token(self):
+        while not await self.consume():
+            await asyncio.sleep(0.1)
+
+token_bucket = TokenBucket(1, 1)
 
 def get_value(obj: Any, key: str, default: Any = None) -> Any:
     if obj is None:
@@ -30,6 +57,7 @@ def format_paper(paper: Dict[str, Any]) -> Dict[str, str]:
         "Influential Citations": to_str(get_value(paper, "influentialCitationCount")),
         "S2 TLDR": get_value(get_value(paper, "tldr"), "text", ""),
         "Abstract": get_value(paper, "abstract", "") or "",
+        "Publication": get_value(paper, "venue", ""),
         "Publication Type": join_values(get_value(paper, "publicationTypes", [])),
         "DOI": get_value(get_value(paper, "externalIds"), "DOI", ""),
         "PDF URL": get_value(get_value(paper, "openAccessPdf"), "url", ""),
@@ -41,6 +69,7 @@ async def fetch_papers(session: aiohttp.ClientSession, query: str, offset: int, 
     params = {"query": query, "offset": offset, "limit": limit, "fields": ",".join(FIELDS)}
     for attempt in range(5):
         try:
+            await token_bucket.wait_for_token()
             async with session.get(BASE_URL, params=params) as response:
                 if response.status == 429:
                     retry_after = int(response.headers.get("Retry-After", 15))
@@ -48,10 +77,12 @@ async def fetch_papers(session: aiohttp.ClientSession, query: str, offset: int, 
                     continue
                 response.raise_for_status()
                 return await response.json()
-        except aiohttp.ClientError:
+        except aiohttp.ClientError as e:
+            if attempt == 4:
+                raise
             await asyncio.sleep(2**attempt)
     raise Exception("Failed to fetch results after multiple attempts")
-    
+
 async def search_semantic_scholar(query: str, max_results: int = 1000, progress_callback: Callable[[int, str], None] = None):
     all_papers = []
     async with aiohttp.ClientSession() as session:
@@ -75,14 +106,26 @@ async def search_semantic_scholar(query: str, max_results: int = 1000, progress_
                 
                 if "next" not in data:
                     break
+                
+                offset = int(data["next"])
             except aiohttp.ClientResponseError as e:
                 if e.status == 429:
                     retry_after = int(e.headers.get("Retry-After", 15))
                     if progress_callback:
                         progress_callback(int((len(all_papers) / max_results) * 100), f"Rate limit hit, waiting {retry_after} seconds...")
                     await asyncio.sleep(retry_after)
+                elif e.status == 400:
+                    raise ValueError("Invalid query or parameters")
+                elif e.status == 401:
+                    raise ValueError("Unauthorized access.")
+                elif e.status == 403:
+                    raise ValueError("Access forbidden. Check your permissions")
+                elif e.status == 404:
+                    raise ValueError("Resource not found")
+                elif e.status == 500:
+                    raise ValueError("Internal server error. Try again later")
                 else:
-                    raise
+                    raise ValueError(f"Unexpected error: {e.status}")
 
     return all_papers[:max_results]
 
@@ -93,13 +136,46 @@ def save_to_file(papers: List[Dict[str, str]], filename: str, file_format: str):
             writer.writeheader()
             seen = set()
             for paper in papers:
-                row = tuple(paper.get(col, "") for col in CSV_COLUMNS)
-                if row not in seen and any(row):
-                    seen.add(row)
+                paper_tuple = tuple(paper.get(col, "") for col in CSV_COLUMNS)
+                if paper_tuple not in seen:
+                    seen.add(paper_tuple)
                     writer.writerow({k: paper.get(k, "") for k in CSV_COLUMNS})
     elif file_format == 'bib':
         with open(filename, 'w', encoding='utf-8') as bibfile:
+            seen = set()
             for paper in papers:
                 bibtex = paper.get("BibTeX", "")
-                if bibtex:
+                if bibtex and bibtex not in seen:
+                    seen.add(bibtex)
                     bibfile.write(bibtex + "\n\n")
+
+def check_internet_connection():    
+    http_urls = [
+        "http://www.google.com",
+        "http://www.bing.com",
+        "http://www.amazon.com",
+        "http://www.wikipedia.org",
+    ]
+    
+    dns_servers = [
+        ("1.1.1.1", 53),
+        ("8.8.8.8", 53),
+        ("208.67.222.222", 53),
+        ("9.9.9.9", 53),
+    ]
+    
+    for url in random.sample(http_urls, len(http_urls)):
+        try:
+            urllib.request.urlopen(url, timeout=5)
+            return True
+        except urllib.error.URLError:
+            continue
+    
+    for server in random.sample(dns_servers, len(dns_servers)):
+        try:
+            socket.create_connection(server, timeout=5)
+            return True
+        except OSError:
+            continue
+    
+    return False
