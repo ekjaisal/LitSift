@@ -41,7 +41,7 @@ LitSift uses publicly accessible endpoints of the [Semantic Scholar Academic Gra
 
 This project is licensed under the MIT License. Please see the [LICENSE](LICENSE) file for details.
 
-## Disclaimer ⚠️
+## Disclaimer 📣
 
 This tool is provided as-is, without any warranties. Users are responsible for ensuring that their use of this implementation and the Semantic Scholar API complies with [Semantic Scholar's terms of service](https://www.semanticscholar.org/product/api).
 
