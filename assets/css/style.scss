@@ -16,12 +16,27 @@ code {
   font-family: monospace;
 }
 
+
 .btn {
-  color: #0366d6;
-  border-color: #0366d6;
+  color: #141414;
+  background-color: #71A6D2;
+  border-color: #141414;
+  font-family: 'Roboto', sans-serif;
+  height: 20px;
+  border-width: 2px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .btn:hover {
-  color: #ffffff;
-  background-color: #0366d6;
+  color: #141414;
+  background-color: #8bb4da;
+  border-color: #141414;
+}
+
+header img {
+  width: 80px;
 }
