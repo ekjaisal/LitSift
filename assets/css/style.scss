@@ -6,10 +6,11 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: #141414;
+  background-color: #F5F3EF;
 }
 
 a {
-  color: #0366d6;
+  color:#71A6D2;
 }
 
 code {
@@ -22,21 +23,36 @@ code {
   background-color: #71A6D2;
   border-color: #141414;
   font-family: 'Roboto', sans-serif;
-  height: 20px;
-  border-width: 2px;
+  height: 40px;
+  border-width: 1px;
   padding: 0 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn:hover {
   color: #141414;
-  background-color: #8bb4da;
+  background-color: #8BB4DA;
   border-color: #141414;
+}
+
+header {
+  text-align: center;
 }
 
 header img {
   width: 80px;
+  display: inline-block;
+}
+
+img {
+  border: 1px solid #141414;
+  border-radius: 4px;
+  padding: 5px;
 }

@@ -22,14 +22,16 @@
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        </br>
+		<p>{{ site.description | default: site.github.project_tagline }}</p>
 		
 		{% if site.show_downloads %}
-		  <a href="{{ site.github.exe_url }}" class="btn"><strong>Download EXE Installer</strong></a>
-		  <a href="{{ site.github.zip_url }}" class="btn"><strong>Download ZIP File</strong></a>
-		  <a href="{{ site.github.repository_url }}" class="btn"><strong>View on GitHub</strong></a>
+		  <a href="{{ site.github.latest_release.assets[0].browser_download_url }}" class="btn">Download</br><strong>Installer</strong></a>
+		  <a href="{{ site.github.zip_url }}" class="btn">Download</br><strong>ZIP File</strong></a>
+		  <a href="{{ site.github.repository_url }}" class="btn">View on</br><strong>GitHub</strong></a>
 		{% endif %}
-
+		</br>
+		</br>
 		{% if site.github.is_project_page %}
 		  <p>This project is maintained by <a href="{{ site.github.owner_url }}">Jaisal E. K.</a></p>
 		{% endif %}
