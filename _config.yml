@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: ""
-description: LitSift: Seamlessly search, sift, and export results from Semantic Scholar to BibTeX/CSV
+description: "LitSift: Seamlessly search, sift, and export results from Semantic Scholar to BibTeX/CSV"
 logo: /LitSift.ico
 show_downloads: true
 github:
