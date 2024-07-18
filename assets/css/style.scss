@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color:#71A6D2;
+  color: #0067A5;
 }
 
 code {
@@ -24,7 +24,7 @@ code {
   border-color: #141414;
   font-family: 'Roboto', sans-serif;
   height: 40px;
-  border-width: 1px;
+  border-width: 3px;
   padding: 0 15px;
   display: inline-flex;
   align-items: center;
@@ -34,6 +34,8 @@ code {
   font-size: 1rem;
   line-height: 1.5;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .btn:hover {
@@ -51,8 +53,8 @@ header img {
   display: inline-block;
 }
 
-img {
-  border: 1px solid #141414;
-  border-radius: 4px;
-  padding: 5px;
+.main-content img[src$=".png"] {
+  border: 1px solid #ddd;
+  border-radius: 0px;
+  padding: 0px;
 }

@@ -26,9 +26,9 @@
 		<p>{{ site.description | default: site.github.project_tagline }}</p>
 		
 		{% if site.show_downloads %}
-		  <a href="{{ site.github.latest_release.assets[0].browser_download_url }}" class="btn">Download</br><strong>Installer</strong></a>
-		  <a href="{{ site.github.zip_url }}" class="btn">Download</br><strong>ZIP File</strong></a>
-		  <a href="{{ site.github.repository_url }}" class="btn">View on</br><strong>GitHub</strong></a>
+		  <a href="{{ site.github.latest_release.assets[0].browser_download_url }}" class="btn">Download <strong>Installer</strong></a>
+		  <a href="{{ site.github.zip_url }}" class="btn">Download <strong>ZIP File</strong></a>
+		  <a href="{{ site.github.repository_url }}" class="btn">View on <strong>GitHub</strong></a>
 		{% endif %}
 		</br>
 		</br>
@@ -42,7 +42,7 @@
 
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">Steve Smith</a></small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
