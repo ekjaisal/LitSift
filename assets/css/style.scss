@@ -23,7 +23,7 @@ code {
   background-color: #71A6D2;
   border-color: #141414;
   font-family: 'Roboto', sans-serif;
-  height: 40px;
+  height: 30px;
   border-width: 3px;
   padding: 0 15px;
   display: inline-flex;
@@ -53,8 +53,8 @@ header img {
   display: inline-block;
 }
 
-.main-content img[src$=".png"] {
-  border: 1px solid #ddd;
+section img[src$=".png"] {
+  border: 2px solid #ddd;
   border-radius: 0px;
   padding: 0px;
 }
