@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+title: ""
+description: ""
+logo: /LitSift.ico
+show_downloads: true

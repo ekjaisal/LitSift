@@ -1,0 +1,25 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #141414;
+}
+
+a {
+  color: #0366d6;
+}
+
+code {
+  font-family: monospace;
+}
+
+.page-header {
+  display: none;
+}
+
+.project-tagline {
+  display: none;
+}
