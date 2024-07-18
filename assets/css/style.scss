@@ -16,10 +16,12 @@ code {
   font-family: monospace;
 }
 
-.page-header {
-  display: none;
+.btn {
+  color: #0366d6;
+  border-color: #0366d6;
 }
 
-.project-tagline {
-  display: none;
+.btn:hover {
+  color: #ffffff;
+  background-color: #0366d6;
 }
