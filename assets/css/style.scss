@@ -21,7 +21,7 @@ code {
 .btn {
   color: #141414;
   background-color: #71A6D2;
-  border-color: #141414;
+  border: 1px solid #141414;
   font-family: 'Roboto', sans-serif;
   height: 30px;
   border-width: 3px;
@@ -53,8 +53,8 @@ header img {
   display: inline-block;
 }
 
-section img[src$=".png"] {
-  border: 2px solid #ddd;
+section img[src$=".jpg"] {
+  border: 1px solid #141414;
   border-radius: 0px;
   padding: 0px;
 }

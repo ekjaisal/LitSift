@@ -2,7 +2,7 @@
 
 LitSift is an intuitive implementation for searching [Semantic Scholar](https://www.semanticscholar.org) and saving filtered results as BibTeX/CSV. It provides a seamless and easy-to-use Graphical User Interface (GUI) for researchers to fetch results, based on the query, from Semantic Scholar's extensive database of academic literature and quickly sift through them using Boolean operators, wildcards, field-specific search, etc., to identify sources relevant to their research.
 
-![LitSift Main Interface](assets/screenshots/main_interface.png)
+![LitSift Main Interface](assets/screenshots/main_interface.jpg)
 
 ## Features 🌟
 
@@ -15,9 +15,9 @@ LitSift is an intuitive implementation for searching [Semantic Scholar](https://
   -  😌 Fetch results efficiently without hassles or having to deal with code.
   -  💡 Minimal and intuitive user interface with dark and light modes.
 
-![LitSift Main Interface](assets/screenshots/preview_light.png)
+![LitSift Main Interface](assets/screenshots/preview_light.jpg)
 
-![LitSift Main Interface](assets/screenshots/preview_dark.png)
+![LitSift Main Interface](assets/screenshots/preview_dark.jpg)
 
 ## Usage 💻
 
