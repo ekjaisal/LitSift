@@ -49,10 +49,5 @@ This tool is provided as-is, without any warranties. Users are responsible for e
 
 LitSift has benefitted significantly from some of the many ideas and suggestions of [Sarath Kurmana](https://github.com/sarathkurmana), the assistance of Anthropic's [Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet) with all the heavy lifting, feedback from [Dhananjayan T. Ashok](https://in.linkedin.com/in/dhananjayan-ashok-geology) and [Jayakrishnan S. S.](https://www.linkedin.com/in/jayakrishnan-s-s-342416181), [Muhammed Rashid's](https://github.com/muhammedrashidx) encouragement, and [Vishnu Rajagopal's](https://vishnurajagopal.in) support.
 
----
-
-## Suggested Citation ✍🏽
-
-Jaisal, E. K. (2024). LitSift: Seamlessly search, sift, and export results from Semantic Scholar to BibTeX/CSV. Available at: [https://github.com/ekjaisal/litsift](https://github.com/ekjaisal/litsift).
 
 <a href="https://www.buymeacoffee.com/ekjaisal" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 160px !important;" ></a>
