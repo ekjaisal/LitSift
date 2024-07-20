@@ -1,5 +1,7 @@
 # LitSift 📚🔍
 
+[![GitHub Release](https://img.shields.io/github/v/release/ekjaisal/LitSift?color=141414&label=Release)](https://github.com/ekjaisal/LitSift/releases) [![GitHub Downloads](https://img.shields.io/github/downloads/ekjaisal/LitSift/total?color=141414&label=Downloads)](https://github.com/ekjaisal/LitSift/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-141414.svg)](https://opensource.org/licenses/MIT) [![Citation File](https://img.shields.io/badge/Citation-CFF-141414.svg)](https://github.com/ekjaisal/LitSift/blob/main/CITATION.cff) [![GitHub stars](https://img.shields.io/github/stars/ekjaisal/LitSift?color=141414)](https://github.com/ekjaisal/LitSift/stargazers)
+
 LitSift is an intuitive implementation for searching [Semantic Scholar](https://www.semanticscholar.org) and saving filtered results as BibTeX/CSV. It provides a seamless and easy-to-use Graphical User Interface (GUI) for researchers to fetch results, based on the query, from Semantic Scholar's extensive database of academic literature and quickly sift through them using Boolean operators, wildcards, field-specific search, etc., to identify sources relevant to their research.
 
 ![LitSift Main Interface](assets/screenshots/main_interface.jpg)
