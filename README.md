@@ -1,4 +1,4 @@
-# LitSift 📚🔍
+# LitSift
 
 [![GitHub Release](https://img.shields.io/github/v/release/ekjaisal/LitSift?color=141414&label=Release)](https://github.com/ekjaisal/LitSift/releases) [![GitHub Downloads](https://img.shields.io/github/downloads/ekjaisal/LitSift/total?color=141414&label=Downloads)](https://github.com/ekjaisal/LitSift/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-141414.svg)](https://github.com/ekjaisal/LitSift/blob/main/LICENSE) [![Citation File](https://img.shields.io/badge/Citation-CFF-141414.svg)](https://github.com/ekjaisal/LitSift/blob/main/CITATION.cff) [![GitHub stars](https://img.shields.io/github/stars/ekjaisal/LitSift?color=141414)](https://github.com/ekjaisal/LitSift/stargazers)
 
