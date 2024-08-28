@@ -10,17 +10,31 @@ body {
 }
 
 a {
-  color: #0067A5;
+  color: #66023C;
+
+  &:hover {
+    color: #8C0352;
+  }
 }
 
 code {
-  font-family: monospace;
+  font-family: 'Courier Prime', monospace;
+  background-color: rgba(102, 2, 60, 0.05);
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
+pre code {
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
+  background-color: rgba(102, 2, 60, 0.05);
+  border: 1px solid rgba(102, 2, 60, 0.1);
+}
 
 .btn {
-  color: #141414;
-  background-color: #71A6D2;
+  color: #F5F3EF;
+  background-color: #66023C;
   border: 2px solid #141414;
   font-family: 'Roboto', sans-serif;
   height: 30px;
@@ -38,8 +52,8 @@ code {
 }
 
 .btn:hover {
-  color: #141414;
-  background-color: #8BB4DA;
+  color: #F5F3EF;
+  background-color: #8C0352;
   border-color: #141414;
 }
 
