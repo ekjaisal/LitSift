@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this implementation, please consider citing it using the metadata from this file."
-type: software
+type: "software"
 authors:
-  - family-names: "E. K."
-    given-names: "Jaisal"
+  - family-names: "Jaisal"
+    given-names: "E. K."
     email: "mail@jaisal.in"
     orcid: "https://orcid.org/0000-0003-3535-0273"
 title: "LitSift: Seamlessly search, sift, and export results from Semantic Scholar to BibTeX/CSV"
-version: 1.0.1
-date-released: 2024
+version: "1.0.1"
+date-released: "2024-07-17"
 url: "https://litsift.jaisal.in"
 repository-code: "https://github.com/ekjaisal/litsift"
-license: MIT
+license: "MIT"
